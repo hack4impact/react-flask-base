@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { User } from '../models/models.js';
+const mongoose = require('mongoose');
+const models = require('../models/models.js');
 
 exports.getAllUsers = (req, res) => {
-    User.find({}, (err, users) => {
+    models.User.find({}, (err, users) => {
         if (err) {
             res.send(err);
         }
@@ -10,18 +10,8 @@ exports.getAllUsers = (req, res) => {
     });
 };
 
-exports.createUser = (req, res) => {
-    const newUser = new User(req.body);
-    newUser.save((err, user) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(user);
-    });
-};
-
 exports.updateUser = (req, res) => {
-    User.findOneAndUpdate({
+    models.User.findOneAndUpdate({
         _id: req.params.userId
     }, req.body,
         (err, user) => {
@@ -33,7 +23,7 @@ exports.updateUser = (req, res) => {
 };
 
 exports.deleteUser = (req, res) => {
-    User.remove({
+    models.User.remove({
         _id: req.params.userId
     }, (err) => {
         if (err) {

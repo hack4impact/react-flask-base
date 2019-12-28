@@ -1,1 +1,1 @@
-export User from 'userModel.js';
+exports.User = require('./userModel.js');

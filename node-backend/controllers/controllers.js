@@ -1,1 +1,2 @@
-export UserController from 'userController.js';
+exports.adminController = require('./adminController.js');
+exports.authController = require('./authController.js');
